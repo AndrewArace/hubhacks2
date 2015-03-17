@@ -1,4 +1,7 @@
-﻿namespace gov.cityofboston.hubhacks2.api {
+﻿using System;
+using System.Linq;
+
+namespace gov.cityofboston.hubhacks2.api {
 
     public partial class Activation {
 
@@ -9,6 +12,19 @@
             a.LastSeen = System.DateTime.UtcNow;
 
             return a;
+        }
+
+
+        public static bool Validate(SurveyEntities ctx, string aId) {
+            Guid g;
+            if(Guid.TryParse(aId, out g)) {
+                var q = (from a in ctx.Activations
+                        where a.Id == g
+                        select a);
+                if (q != null)
+                    return true;
+            }
+            return false;
         }
     }
 }

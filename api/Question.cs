@@ -23,6 +23,10 @@ namespace gov.cityofboston.hubhacks2.api
         public System.Guid SurveyId { get; set; }
         public string QuestionText { get; set; }
         public int QuestionTypeId { get; set; }
+        public bool Enabled { get; set; }
+        public Nullable<System.DateTime> FromDate { get; set; }
+        public Nullable<System.DateTime> ToDate { get; set; }
+        public Nullable<int> QuestionOrder { get; set; }
     
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual QuestionType QuestionType { get; set; }

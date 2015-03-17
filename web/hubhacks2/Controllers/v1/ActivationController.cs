@@ -7,12 +7,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace gov.cityofboston.hubhacks2.web.Controllers {
+namespace gov.cityofboston.hubhacks2.web.Controllers.v1 {
 
     public class ActivationController : ApiController {
 
         [HttpGet]
-        [Route("api/activation/create")]
+        [Route("api/v1/activation/create")]
         public result GetNewActivation() {
             using(var ctx = new SurveyEntities()) {
                 var a = Activation.CreateActivation();

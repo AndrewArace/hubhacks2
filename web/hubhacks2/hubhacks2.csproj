@@ -130,8 +130,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ActivationController.cs" />
+    <Compile Include="Controllers\v1\ActivationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\v1\SurveyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -140,6 +141,7 @@
   <ItemGroup>
     <Content Include="css\flat-ui-pro.css" />
     <Content Include="css\flat-ui-pro.min.css" />
+    <Content Include="css\main.css" />
     <Content Include="css\vendor\bootstrap.min.css" />
     <Content Include="fonts\glyphicons\flat-ui-pro-icons-regular.svg" />
     <Content Include="fonts\lato\lato-black.svg" />
@@ -193,7 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
