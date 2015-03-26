@@ -58,10 +58,15 @@
     <Compile Include="Demographic.cs">
       <DependentUpon>SurveyDal.tt</DependentUpon>
     </Compile>
-    <Compile Include="Event.cs">
+    <Compile Include="json\jLocation.cs" />
+    <Compile Include="json\jQuestion.cs" />
+    <Compile Include="json\jQuestionAnswer.cs" />
+    <Compile Include="json\jSurvey.cs" />
+    <Compile Include="json\result.cs" />
+    <Compile Include="Location.cs">
       <DependentUpon>SurveyDal.tt</DependentUpon>
     </Compile>
-    <Compile Include="json\result.cs" />
+    <Compile Include="Location_Extended.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs">
       <DependentUpon>SurveyDal.tt</DependentUpon>
@@ -69,6 +74,7 @@
     <Compile Include="QuestionType.cs">
       <DependentUpon>SurveyDal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Question_Extended.cs" />
     <Compile Include="Survey.cs">
       <DependentUpon>SurveyDal.tt</DependentUpon>
     </Compile>
@@ -88,6 +94,9 @@
       <DependentUpon>SurveyDal.edmx</DependentUpon>
     </Compile>
     <Compile Include="Survey_Extended.cs" />
+    <Compile Include="Taken.cs">
+      <DependentUpon>SurveyDal.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -132,6 +132,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\v1\ActivationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\v1\AnswerController.cs" />
+    <Compile Include="Controllers\v1\LocationController.cs" />
     <Compile Include="Controllers\v1\SurveyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +204,9 @@
       <Project>{402a9acb-079d-46f7-9561-d93cf624a18b}</Project>
       <Name>api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\geo01-demo.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

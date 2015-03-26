@@ -22,6 +22,8 @@
           <Property Name="QuestionId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="AnswerLat" Type="decimal" Precision="9" Scale="4" />
           <Property Name="AnswerLng" Type="decimal" Precision="9" Scale="4" />
+          <Property Name="AnswerYesNo" Type="bit" />
+          <Property Name="AnswerNumeric" Type="decimal" Precision="9" Scale="4" />
         </EntityType>
         <EntityType Name="Demographic">
           <Key>
@@ -30,14 +32,26 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ActivationId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <EntityType Name="Event">
+        <EntityType Name="Location">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
           <Property Name="FromDate" Type="datetime" />
           <Property Name="ToDate" Type="datetime" />
+          <Property Name="Lat" Type="decimal" Precision="9" Scale="4" Nullable="false" />
+          <Property Name="Lng" Type="decimal" Precision="9" Scale="4" Nullable="false" />
+          <Property Name="Radius" Type="decimal" Precision="9" Scale="4" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocationSurvey">
+          <Key>
+            <PropertyRef Name="LocationId" />
+            <PropertyRef Name="SurveyId" />
+          </Key>
+          <Property Name="LocationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -46,6 +60,9 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="QuestionText" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="LabelLow" Type="nvarchar" MaxLength="50" />
+          <Property Name="LabelHigh" Type="nvarchar" MaxLength="50" />
+          <Property Name="LabelHighGreen" Type="bit" Nullable="false" />
           <Property Name="QuestionTypeId" Type="int" Nullable="false" />
           <Property Name="QuestionOrder" Type="int" />
           <Property Name="Enabled" Type="bit" Nullable="false" />
@@ -70,6 +87,18 @@
           <Property Name="Enabled" Type="bit" Nullable="false" />
           <Property Name="FromDate" Type="datetime" />
           <Property Name="ToDate" Type="datetime" />
+          <Property Name="SmallImageUrl" Type="nvarchar" MaxLength="200" />
+          <Property Name="LargeImageUrl" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Taken">
+          <Key>
+            <PropertyRef Name="ActivationId" />
+            <PropertyRef Name="SurveyId" />
+          </Key>
+          <Property Name="ActivationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SurveyId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Skipped" Type="bit" Nullable="false" />
+          <Property Name="TakenDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_Answer_Activation">
           <End Role="Activation" Type="Self.Activation" Multiplicity="1" />
@@ -107,6 +136,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LocationSurvey_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="LocationSurvey" Type="Self.LocationSurvey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocationSurvey">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocationSurvey_Survey">
+          <End Role="Survey" Type="Self.Survey" Multiplicity="1" />
+          <End Role="LocationSurvey" Type="Self.LocationSurvey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocationSurvey">
+              <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Question_QuestionType">
           <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="1" />
           <End Role="Question" Type="Self.Question" Multiplicity="*" />
@@ -131,14 +184,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Taken_Activation">
+          <End Role="Activation" Type="Self.Activation" Multiplicity="1" />
+          <End Role="Taken" Type="Self.Taken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Taken">
+              <PropertyRef Name="ActivationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Taken_Survey">
+          <End Role="Survey" Type="Self.Survey" Multiplicity="1" />
+          <End Role="Taken" Type="Self.Taken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Taken">
+              <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="govcityofbostonhubhacks2apimodelStoreContainer">
           <EntitySet Name="Activation" EntityType="Self.Activation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Demographic" EntityType="Self.Demographic" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocationSurvey" EntityType="Self.LocationSurvey" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Survey" EntityType="Self.Survey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Taken" EntityType="Self.Taken" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Answer_Activation" Association="Self.FK_Answer_Activation">
             <End Role="Activation" EntitySet="Activation" />
             <End Role="Answer" EntitySet="Answer" />
@@ -151,6 +230,14 @@
             <End Role="Activation" EntitySet="Activation" />
             <End Role="Demographic" EntitySet="Demographic" />
           </AssociationSet>
+          <AssociationSet Name="FK_LocationSurvey_Location" Association="Self.FK_LocationSurvey_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="LocationSurvey" EntitySet="LocationSurvey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocationSurvey_Survey" Association="Self.FK_LocationSurvey_Survey">
+            <End Role="Survey" EntitySet="Survey" />
+            <End Role="LocationSurvey" EntitySet="LocationSurvey" />
+          </AssociationSet>
           <AssociationSet Name="FK_Question_QuestionType" Association="Self.FK_Question_QuestionType">
             <End Role="QuestionType" EntitySet="QuestionType" />
             <End Role="Question" EntitySet="Question" />
@@ -158,6 +245,14 @@
           <AssociationSet Name="FK_Question_Survey" Association="Self.FK_Question_Survey">
             <End Role="Survey" EntitySet="Survey" />
             <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Taken_Activation" Association="Self.FK_Taken_Activation">
+            <End Role="Activation" EntitySet="Activation" />
+            <End Role="Taken" EntitySet="Taken" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Taken_Survey" Association="Self.FK_Taken_Survey">
+            <End Role="Survey" EntitySet="Survey" />
+            <End Role="Taken" EntitySet="Taken" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -173,6 +268,7 @@
           <Property Name="LastSeen" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Answers" Relationship="Self.FK_Answer_Activation" FromRole="Activation" ToRole="Answer" />
           <NavigationProperty Name="Demographics" Relationship="Self.FK_Demographic_Activation" FromRole="Activation" ToRole="Demographic" />
+          <NavigationProperty Name="Takens" Relationship="gov.cityofboston.hubhacks2.api.model.FK_Taken_Activation" FromRole="Activation" ToRole="Taken" />
         </EntityType>
         <EntityType Name="Answer">
           <Key>
@@ -185,6 +281,8 @@
           <Property Name="AnswerLng" Type="Decimal" Precision="9" Scale="4" />
           <NavigationProperty Name="Activation" Relationship="Self.FK_Answer_Activation" FromRole="Answer" ToRole="Activation" />
           <NavigationProperty Name="Question" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+          <Property Name="AnswerYesNo" Type="Boolean" />
+          <Property Name="AnswerNumeric" Type="Decimal" Precision="9" Scale="4" />
         </EntityType>
         <EntityType Name="Demographic">
           <Key>
@@ -193,15 +291,6 @@
           <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ActivationId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Activation" Relationship="Self.FK_Demographic_Activation" FromRole="Demographic" ToRole="Activation" />
-        </EntityType>
-        <EntityType Name="Event">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="FromDate" Type="DateTime" Precision="3" />
-          <Property Name="ToDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
@@ -218,6 +307,9 @@
           <Property Name="FromDate" Type="DateTime" Precision="3" />
           <Property Name="ToDate" Type="DateTime" Precision="3" />
           <Property Name="QuestionOrder" Type="Int32" />
+          <Property Name="LabelLow" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LabelHigh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LabelHighGreen" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -239,6 +331,10 @@
           <Property Name="ToDate" Type="DateTime" Precision="3" />
           <Property Name="SurveyTypeId" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SmallImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LargeImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Takens" Relationship="gov.cityofboston.hubhacks2.api.model.FK_Taken_Survey" FromRole="Survey" ToRole="Taken" />
+          <NavigationProperty Name="Locations" Relationship="gov.cityofboston.hubhacks2.api.model.LocationSurvey" FromRole="Survey" ToRole="Location" />
         </EntityType>
         <Association Name="FK_Answer_Activation">
           <End Role="Activation" Type="Self.Activation" Multiplicity="1" />
@@ -304,7 +400,6 @@
           <EntitySet Name="Activations" EntityType="Self.Activation" />
           <EntitySet Name="Answers" EntityType="Self.Answer" />
           <EntitySet Name="Demographics" EntityType="Self.Demographic" />
-          <EntitySet Name="Events" EntityType="Self.Event" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
           <EntitySet Name="QuestionTypes" EntityType="Self.QuestionType" />
           <EntitySet Name="Surveys" EntityType="Self.Survey" />
@@ -328,7 +423,75 @@
             <End Role="Survey" EntitySet="Surveys" />
             <End Role="Question" EntitySet="Questions" />
           </AssociationSet>
+          <EntitySet Name="Takens" EntityType="gov.cityofboston.hubhacks2.api.model.Taken" />
+          <AssociationSet Name="FK_Taken_Activation" Association="gov.cityofboston.hubhacks2.api.model.FK_Taken_Activation">
+            <End Role="Activation" EntitySet="Activations" />
+            <End Role="Taken" EntitySet="Takens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Taken_Survey" Association="gov.cityofboston.hubhacks2.api.model.FK_Taken_Survey">
+            <End Role="Survey" EntitySet="Surveys" />
+            <End Role="Taken" EntitySet="Takens" />
+          </AssociationSet>
+          <EntitySet Name="Locations" EntityType="gov.cityofboston.hubhacks2.api.model.Location" />
+          <AssociationSet Name="LocationSurvey" Association="gov.cityofboston.hubhacks2.api.model.LocationSurvey">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Survey" EntitySet="Surveys" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Taken">
+          <Key>
+            <PropertyRef Name="ActivationId" />
+            <PropertyRef Name="SurveyId" />
+          </Key>
+          <Property Name="ActivationId" Type="Guid" Nullable="false" />
+          <Property Name="SurveyId" Type="Guid" Nullable="false" />
+          <Property Name="Skipped" Type="Boolean" Nullable="false" />
+          <Property Name="TakenDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Activation" Relationship="gov.cityofboston.hubhacks2.api.model.FK_Taken_Activation" FromRole="Taken" ToRole="Activation" />
+          <NavigationProperty Name="Survey" Relationship="gov.cityofboston.hubhacks2.api.model.FK_Taken_Survey" FromRole="Taken" ToRole="Survey" />
+        </EntityType>
+        <Association Name="FK_Taken_Activation">
+          <End Type="gov.cityofboston.hubhacks2.api.model.Activation" Role="Activation" Multiplicity="1" />
+          <End Type="gov.cityofboston.hubhacks2.api.model.Taken" Role="Taken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Taken">
+              <PropertyRef Name="ActivationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Taken_Survey">
+          <End Type="gov.cityofboston.hubhacks2.api.model.Survey" Role="Survey" Multiplicity="1" />
+          <End Type="gov.cityofboston.hubhacks2.api.model.Taken" Role="Taken" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Taken">
+              <PropertyRef Name="SurveyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FromDate" Type="DateTime" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="Lat" Type="Decimal" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Lng" Type="Decimal" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="Radius" Type="Decimal" Precision="9" Scale="4" />
+          <NavigationProperty Name="Surveys" Relationship="gov.cityofboston.hubhacks2.api.model.LocationSurvey" FromRole="Location" ToRole="Survey" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="LocationSurvey">
+          <End Type="gov.cityofboston.hubhacks2.api.model.Location" Role="Location" Multiplicity="*" />
+          <End Type="gov.cityofboston.hubhacks2.api.model.Survey" Role="Survey" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -347,6 +510,8 @@
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.Answer">
               <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="AnswerNumeric" ColumnName="AnswerNumeric" />
+                <ScalarProperty Name="AnswerYesNo" ColumnName="AnswerYesNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ActivationId" ColumnName="ActivationId" />
                 <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
@@ -363,19 +528,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Events">
-            <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.Event">
-              <MappingFragment StoreEntitySet="Event">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.Question">
               <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="LabelHighGreen" ColumnName="LabelHighGreen" />
+                <ScalarProperty Name="LabelHigh" ColumnName="LabelHigh" />
+                <ScalarProperty Name="LabelLow" ColumnName="LabelLow" />
                 <ScalarProperty Name="QuestionOrder" ColumnName="QuestionOrder" />
                 <ScalarProperty Name="ToDate" ColumnName="ToDate" />
                 <ScalarProperty Name="FromDate" ColumnName="FromDate" />
@@ -398,6 +556,8 @@
           <EntitySetMapping Name="Surveys">
             <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.Survey">
               <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="LargeImageUrl" ColumnName="LargeImageUrl" />
+                <ScalarProperty Name="SmallImageUrl" ColumnName="SmallImageUrl" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="SurveyTypeId" ColumnName="SurveyTypeId" />
                 <ScalarProperty Name="ToDate" ColumnName="ToDate" />
@@ -408,6 +568,38 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Takens">
+            <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.Taken">
+              <MappingFragment StoreEntitySet="Taken">
+                <ScalarProperty Name="TakenDate" ColumnName="TakenDate" />
+                <ScalarProperty Name="Skipped" ColumnName="Skipped" />
+                <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+                <ScalarProperty Name="ActivationId" ColumnName="ActivationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Radius" ColumnName="Radius" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="LocationSurvey" TypeName="gov.cityofboston.hubhacks2.api.model.LocationSurvey" StoreEntitySet="LocationSurvey">
+            <EndProperty Name="Survey">
+              <ScalarProperty Name="Id" ColumnName="SurveyId" />
+            </EndProperty>
+            <EndProperty Name="Location">
+              <ScalarProperty Name="Id" ColumnName="LocationId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -28,9 +28,10 @@ namespace gov.cityofboston.hubhacks2.api
         public virtual DbSet<Activation> Activations { get; set; }
         public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Demographic> Demographics { get; set; }
-        public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<QuestionType> QuestionTypes { get; set; }
         public virtual DbSet<Survey> Surveys { get; set; }
+        public virtual DbSet<Taken> Takens { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
     }
 }

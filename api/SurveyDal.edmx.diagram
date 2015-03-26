@@ -5,10 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c0c2e8418aa94cb4b4f1d53b7dd71fbd" Name="Diagram1">
-        <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Activation" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Activation" Width="1.5" PointX="4.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Answer" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Demographic" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Event" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Demographic" Width="1.5" PointX="7.375" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Question" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.QuestionType" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Survey" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
@@ -17,6 +16,11 @@
         <AssociationConnector Association="gov.cityofboston.hubhacks2.api.model.FK_Answer_Question" ManuallyRouted="false" />
         <AssociationConnector Association="gov.cityofboston.hubhacks2.api.model.FK_Question_QuestionType" ManuallyRouted="false" />
         <AssociationConnector Association="gov.cityofboston.hubhacks2.api.model.FK_Question_Survey" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Taken" Width="1.5" PointX="2.75" PointY="8.5" />
+        <AssociationConnector Association="gov.cityofboston.hubhacks2.api.model.FK_Taken_Activation" />
+        <AssociationConnector Association="gov.cityofboston.hubhacks2.api.model.FK_Taken_Survey" />
+        <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Location" Width="1.5" PointX="9.875" PointY="5.625" />
+        <AssociationConnector Association="gov.cityofboston.hubhacks2.api.model.LocationSurvey" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

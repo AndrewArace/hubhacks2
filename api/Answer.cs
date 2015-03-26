@@ -19,6 +19,8 @@ namespace gov.cityofboston.hubhacks2.api
         public System.Guid QuestionId { get; set; }
         public Nullable<decimal> AnswerLat { get; set; }
         public Nullable<decimal> AnswerLng { get; set; }
+        public Nullable<bool> AnswerYesNo { get; set; }
+        public Nullable<decimal> AnswerNumeric { get; set; }
     
         public virtual Activation Activation { get; set; }
         public virtual Question Question { get; set; }

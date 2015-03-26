@@ -27,6 +27,9 @@ namespace gov.cityofboston.hubhacks2.api
         public Nullable<System.DateTime> FromDate { get; set; }
         public Nullable<System.DateTime> ToDate { get; set; }
         public Nullable<int> QuestionOrder { get; set; }
+        public string LabelLow { get; set; }
+        public string LabelHigh { get; set; }
+        public bool LabelHighGreen { get; set; }
     
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual QuestionType QuestionType { get; set; }

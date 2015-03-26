@@ -42,7 +42,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.suo
-api/bin/Debug/*.*
+api/bin
 api/obj
 web/hubhacks2/bin
 web/hubhacks2/obj

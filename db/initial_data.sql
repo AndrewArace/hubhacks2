@@ -1,12 +1,15 @@
 /*
-AArace 20150316 - Initial data population
+AArace 20150316 - Initial sample data population
 
-select * from surveytype
-
+truncate table taken
+truncate table answer
 delete from question
 delete from questiontype
+delete from locationsurvey
+delete from location
 delete from survey
 delete from surveytype
+delete from activation
 
 */
 
@@ -49,13 +52,21 @@ begin
 	set identity_insert questiontype off
 end
 
+declare @id uniqueidentifier
+declare @lId uniqueidentifier
 
 /*
 	SURVEY
 */
 if not exists(select null from survey)
 begin
-	declare @id uniqueidentifier
+
+	insert into survey (name, surveytypeid, description)
+	values ('Boston Happiness Survey', 1, 'The simplest of surveys about your happiness in the city.')
+		select @id = id from survey where name = 'Boston Happiness Survey'
+
+		insert into question (SurveyId, QuestionTypeId, questiontext)
+		values (@id, 1, 'Have your experiences in Boston been happy?')
 
 	insert into survey (name, surveytypeid, description)
 	values ('Boston Cleanliness Survey', 2, 'Help Boston streets shine. Tell us how clean your current location is, and help our Public Workds department keep our city streets, sidewalks, and public spaces presentable.')
@@ -67,16 +78,16 @@ begin
 		insert into question (SurveyId, QuestionTypeId, questiontext)
 		values (@id, 1, 'Is there any visible graffiti at your current location?')
 		
-		insert into question (SurveyId, QuestionTypeId, questiontext)
-		values (@id, 2, 'Overall, how clean is your current location? (1=very dirty, 10=sparkling clean)')
+		insert into question (SurveyId, QuestionTypeId, questiontext, labellow, LabelHigh, LabelHighGreen)
+		values (@id, 2, 'Overall, how clean is your current location?', 'Very Dirty', 'Sparkling Clean', 1)
 
 
 	insert into survey (name, surveytypeid, description)
 	values ('Safety Survey', 2, 'Help every corner of Boston be safe for all of its residents and visitors. Take this quick survey to let us know how safe you feel your current location is.')
 		select @id = id from survey where name = 'Safety Survey'
 
-		insert into question (SurveyId, QuestionTypeId, questiontext)
-		values (@id, 2, 'Overall, how safe does your current location feel? (1=feels dangerous and scary, 10=feels very safe)')
+		insert into question (SurveyId, QuestionTypeId, questiontext, LabelLow, LabelHigh, LabelHighGreen)
+		values (@id, 2, 'Overall, how safe does your current location feel?', 'very scary', 'very safe', 1)
 
 		insert into question (SurveyId, QuestionTypeId, questiontext)
 		values (@id, 1, 'Are there any visible police or fire call boxes?')
@@ -92,12 +103,64 @@ begin
 	values ('Transportation Survey', 2, 'How is Boston''s Transportation system faring? Take this survey to tell us what needs to be improved in the transportation system around your current location.')
 		select @id = id from survey where name = 'Transportation Survey'
 
-		insert into question (SurveyId, QuestionTypeId, questiontext)
-		values (@id, 2, 'How congested is the traffic at your current location? (1=free flowing traffic, 10=gridlock)')
+		insert into question (SurveyId, QuestionTypeId, questiontext, LabelLow, LabelHigh)
+		values (@id, 2, 'How congested is the traffic at your current location?', 'free flowing traffic', 'gridlock')
 
 		insert into question (SurveyId, QuestionTypeId, questiontext)
 		values (@id, 1, 'Is there public transportation (MBTA subway, bus, etc) available?')
 
 		insert into question (SurveyId, QuestionTypeId, questiontext)
 		values (@id, 1, 'Is other transportation, such as cabs, easily visible?')
+end
+
+
+
+if not exists(select null from location)
+begin
+	insert into Location (name, toDate, lat, lng, radius)
+	values ('HubHacks2', '4/6/2015', 42.352293, -71.045229, 1000)
+	
+	select @lId = id from Location where name = 'HubHacks2'
+	insert into survey (name, surveytypeid, description)
+	values ('HubHacks2 Survey', 3, 'Tell us how awesome has this HubHacks has been!')
+		select @id = id from survey where name = 'HubHacks2 Survey'
+
+		insert into question (SurveyId, QuestionTypeId, questiontext, LabelLow, LabelHigh, LabelHighGreen)
+		values (@id, 2, 'How Awesome?', 'mildly awesome', 'VERY AWESOME!', 1)
+
+		insert into locationsurvey(locationid, surveyid) values (@lid, @id)
+
+	insert into Location (name, toDate, lat, lng, radius)
+	values ('BSC', '4/1/2015', 42.339411, -71.036545, 1000)
+
+	select @lId = id from Location where name = 'BSC'
+	insert into survey (name, surveytypeid, description)
+	values ('BSC Survey', 3, 'Tell us how awesome BSC is!')
+		select @id = id from survey where name = 'BSC Survey'
+
+		insert into question (SurveyId, QuestionTypeId, questiontext, LabelLow, LabelHigh, LabelHighGreen)
+		values (@id, 2, 'How Awesome?', 'mildly awesome', 'VERY AWESOME!', 1)
+
+		insert into question (SurveyId, QuestionTypeId, questiontext)
+		values (@id, 1, 'Do you work there?')
+
+		insert into locationsurvey(locationid, surveyid) values (@lid, @id)
+
+
+	insert into Location (name, toDate, lat, lng, radius)
+	values ('von Wahlde Homestead', '4/6/2015', 42.418967, -71.315149, 1000)
+	
+	select @lId = id from Location where name = 'von Wahlde Homestead'
+	insert into survey (name, surveytypeid, description)
+	values ('von Wahlde Survey', 3, 'Tell us how cool anyone with a von in their last name is.')
+		select @id = id from survey where name = 'von Wahlde Survey'
+
+		insert into question (SurveyId, QuestionTypeId, questiontext, LabelLow, LabelHigh, LabelHighGreen)
+		values (@id, 2, 'How cool is Matt?', 'mildly cool', 'amazingly cool', 1)
+
+		insert into question (SurveyId, QuestionTypeId, questiontext)
+		values (@id, 1, 'Did Matt make you say that?')
+
+		insert into locationsurvey(locationid, surveyid) values (@lid, @id)
+
 end

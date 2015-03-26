@@ -17,6 +17,8 @@ namespace gov.cityofboston.hubhacks2.api
         public Survey()
         {
             this.Questions = new HashSet<Question>();
+            this.Takens = new HashSet<Taken>();
+            this.Locations = new HashSet<Location>();
         }
     
         public System.Guid Id { get; set; }
@@ -26,7 +28,11 @@ namespace gov.cityofboston.hubhacks2.api
         public Nullable<System.DateTime> ToDate { get; set; }
         public int SurveyTypeId { get; set; }
         public string Description { get; set; }
+        public string SmallImageUrl { get; set; }
+        public string LargeImageUrl { get; set; }
     
         public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<Taken> Takens { get; set; }
+        public virtual ICollection<Location> Locations { get; set; }
     }
 }

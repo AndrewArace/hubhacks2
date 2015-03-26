@@ -9,6 +9,10 @@ using System.Web.Http;
 
 namespace gov.cityofboston.hubhacks2.web.Controllers.v1 {
 
+    /// <summary>
+    /// Controls the activation (registration) of mobile clients
+    /// 20150316 Andrew Arace
+    /// </summary>
     public class ActivationController : ApiController {
 
         [HttpGet]

@@ -18,6 +18,7 @@ namespace gov.cityofboston.hubhacks2.api
         {
             this.Answers = new HashSet<Answer>();
             this.Demographics = new HashSet<Demographic>();
+            this.Takens = new HashSet<Taken>();
         }
     
         public System.Guid Id { get; set; }
@@ -26,5 +27,6 @@ namespace gov.cityofboston.hubhacks2.api
     
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual ICollection<Demographic> Demographics { get; set; }
+        public virtual ICollection<Taken> Takens { get; set; }
     }
 }
