@@ -25,6 +25,19 @@
           <Property Name="AnswerYesNo" Type="bit" />
           <Property Name="AnswerNumeric" Type="decimal" Precision="9" Scale="4" />
         </EntityType>
+        <EntityType Name="CloudData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="XCoord" Type="decimal" Precision="9" Scale="4" Nullable="false" />
+          <Property Name="YCoord" Type="decimal" Precision="9" Scale="4" Nullable="false" />
+          <Property Name="IsRealtime" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemTime" Type="datetime" Nullable="false" />
+          <Property Name="IsHappy" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Demographic">
           <Key>
             <PropertyRef Name="Id" />
@@ -211,6 +224,7 @@
         <EntityContainer Name="govcityofbostonhubhacks2apimodelStoreContainer">
           <EntitySet Name="Activation" EntityType="Self.Activation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CloudData" EntityType="Self.CloudData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Demographic" EntityType="Self.Demographic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LocationSurvey" EntityType="Self.LocationSurvey" Schema="dbo" store:Type="Tables" />
@@ -437,6 +451,7 @@
             <End Role="Location" EntitySet="Locations" />
             <End Role="Survey" EntitySet="Surveys" />
           </AssociationSet>
+          <EntitySet Name="CloudDatas" EntityType="gov.cityofboston.hubhacks2.api.model.CloudData" />
         </EntityContainer>
         <EntityType Name="Taken">
           <Key>
@@ -492,6 +507,19 @@
           <End Type="gov.cityofboston.hubhacks2.api.model.Location" Role="Location" Multiplicity="*" />
           <End Type="gov.cityofboston.hubhacks2.api.model.Survey" Role="Survey" Multiplicity="*" />
         </Association>
+        <EntityType Name="CloudData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="XCoord" Type="Decimal" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="YCoord" Type="Decimal" Nullable="false" Precision="9" Scale="4" />
+          <Property Name="IsRealtime" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ItemTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsHappy" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -600,6 +628,20 @@
               <ScalarProperty Name="Id" ColumnName="LocationId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="CloudDatas">
+            <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.CloudData">
+              <MappingFragment StoreEntitySet="CloudData">
+                <ScalarProperty Name="IsHappy" ColumnName="IsHappy" />
+                <ScalarProperty Name="ItemTime" ColumnName="ItemTime" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsRealtime" ColumnName="IsRealtime" />
+                <ScalarProperty Name="YCoord" ColumnName="YCoord" />
+                <ScalarProperty Name="XCoord" ColumnName="XCoord" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

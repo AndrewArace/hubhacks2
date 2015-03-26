@@ -55,9 +55,13 @@
     <Compile Include="Answer.cs">
       <DependentUpon>SurveyDal.tt</DependentUpon>
     </Compile>
+    <Compile Include="CloudData.cs">
+      <DependentUpon>SurveyDal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Demographic.cs">
       <DependentUpon>SurveyDal.tt</DependentUpon>
     </Compile>
+    <Compile Include="json\jCloudData.cs" />
     <Compile Include="json\jLocation.cs" />
     <Compile Include="json\jQuestion.cs" />
     <Compile Include="json\jQuestionAnswer.cs" />

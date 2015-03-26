@@ -33,5 +33,6 @@ namespace gov.cityofboston.hubhacks2.api
         public virtual DbSet<Survey> Surveys { get; set; }
         public virtual DbSet<Taken> Takens { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<CloudData> CloudDatas { get; set; }
     }
 }

@@ -21,6 +21,7 @@
         <AssociationConnector Association="gov.cityofboston.hubhacks2.api.model.FK_Taken_Survey" />
         <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.Location" Width="1.5" PointX="9.875" PointY="5.625" />
         <AssociationConnector Association="gov.cityofboston.hubhacks2.api.model.LocationSurvey" />
+        <EntityTypeShape EntityType="gov.cityofboston.hubhacks2.api.model.CloudData" Width="1.5" PointX="8.625" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

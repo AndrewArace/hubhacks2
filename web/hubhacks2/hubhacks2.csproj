@@ -133,6 +133,7 @@
     <Compile Include="Controllers\v1\ActivationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\v1\AnswerController.cs" />
+    <Compile Include="Controllers\v1\CloudDataController.cs" />
     <Compile Include="Controllers\v1\LocationController.cs" />
     <Compile Include="Controllers\v1\SurveyController.cs" />
     <Compile Include="Global.asax.cs">
