@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: cbb154524e4f84e4399c96f2de8b080f
+timeCreated: 1427257976
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Polyline
+    100004: Polyline 1
+    100006: Polyline 10
+    100008: Polyline 11
+    100010: Polyline 12
+    100012: Polyline 13
+    100014: Polyline 14
+    100016: Polyline 15
+    100018: Polyline 16
+    100020: Polyline 17
+    100022: Polyline 18
+    100024: Polyline 19
+    100026: Polyline 2
+    100028: Polyline 20
+    100030: Polyline 21
+    100032: Polyline 22
+    100034: Polyline 23
+    100036: Polyline 24
+    100038: Polyline 25
+    100040: Polyline 26
+    100042: Polyline 27
+    100044: Polyline 28
+    100046: Polyline 29
+    100048: Polyline 3
+    100050: Polyline 30
+    100052: Polyline 31
+    100054: Polyline 32
+    100056: Polyline 33
+    100058: Polyline 34
+    100060: Polyline 35
+    100062: Polyline 36
+    100064: Polyline 37
+    100066: Polyline 38
+    100068: Polyline 39
+    100070: Polyline 4
+    100072: Polyline 5
+    100074: Polyline 6
+    100076: Polyline 7
+    100078: Polyline 8
+    100080: Polyline 9
+    400000: //RootNode
+    400002: Polyline
+    400004: Polyline 1
+    400006: Polyline 10
+    400008: Polyline 11
+    400010: Polyline 12
+    400012: Polyline 13
+    400014: Polyline 14
+    400016: Polyline 15
+    400018: Polyline 16
+    400020: Polyline 17
+    400022: Polyline 18
+    400024: Polyline 19
+    400026: Polyline 2
+    400028: Polyline 20
+    400030: Polyline 21
+    400032: Polyline 22
+    400034: Polyline 23
+    400036: Polyline 24
+    400038: Polyline 25
+    400040: Polyline 26
+    400042: Polyline 27
+    400044: Polyline 28
+    400046: Polyline 29
+    400048: Polyline 3
+    400050: Polyline 30
+    400052: Polyline 31
+    400054: Polyline 32
+    400056: Polyline 33
+    400058: Polyline 34
+    400060: Polyline 35
+    400062: Polyline 36
+    400064: Polyline 37
+    400066: Polyline 38
+    400068: Polyline 39
+    400070: Polyline 4
+    400072: Polyline 5
+    400074: Polyline 6
+    400076: Polyline 7
+    400078: Polyline 8
+    400080: Polyline 9
+    2300000: Polyline
+    2300002: Polyline 1
+    2300004: Polyline 10
+    2300006: Polyline 11
+    2300008: Polyline 12
+    2300010: Polyline 13
+    2300012: Polyline 14
+    2300014: Polyline 15
+    2300016: Polyline 16
+    2300018: Polyline 17
+    2300020: Polyline 18
+    2300022: Polyline 19
+    2300024: Polyline 2
+    2300026: Polyline 20
+    2300028: Polyline 21
+    2300030: Polyline 22
+    2300032: Polyline 23
+    2300034: Polyline 24
+    2300036: Polyline 25
+    2300038: Polyline 26
+    2300040: Polyline 27
+    2300042: Polyline 28
+    2300044: Polyline 29
+    2300046: Polyline 3
+    2300048: Polyline 30
+    2300050: Polyline 31
+    2300052: Polyline 32
+    2300054: Polyline 33
+    2300056: Polyline 34
+    2300058: Polyline 35
+    2300060: Polyline 36
+    2300062: Polyline 37
+    2300064: Polyline 38
+    2300066: Polyline 39
+    2300068: Polyline 4
+    2300070: Polyline 5
+    2300072: Polyline 6
+    2300074: Polyline 7
+    2300076: Polyline 8
+    2300078: Polyline 9
+    3300000: Polyline
+    3300002: Polyline 1
+    3300004: Polyline 10
+    3300006: Polyline 11
+    3300008: Polyline 12
+    3300010: Polyline 13
+    3300012: Polyline 14
+    3300014: Polyline 15
+    3300016: Polyline 16
+    3300018: Polyline 17
+    3300020: Polyline 18
+    3300022: Polyline 19
+    3300024: Polyline 2
+    3300026: Polyline 20
+    3300028: Polyline 21
+    3300030: Polyline 22
+    3300032: Polyline 23
+    3300034: Polyline 24
+    3300036: Polyline 25
+    3300038: Polyline 26
+    3300040: Polyline 27
+    3300042: Polyline 28
+    3300044: Polyline 29
+    3300046: Polyline 3
+    3300048: Polyline 30
+    3300050: Polyline 31
+    3300052: Polyline 32
+    3300054: Polyline 33
+    3300056: Polyline 34
+    3300058: Polyline 35
+    3300060: Polyline 36
+    3300062: Polyline 37
+    3300064: Polyline 38
+    3300066: Polyline 39
+    3300068: Polyline 4
+    3300070: Polyline 5
+    3300072: Polyline 6
+    3300074: Polyline 7
+    3300076: Polyline 8
+    3300078: Polyline 9
+    4300000: Polyline
+    4300002: Polyline
+    4300004: Polyline
+    4300006: Polyline
+    4300008: Polyline
+    4300010: Polyline
+    4300012: Polyline
+    4300014: Polyline
+    4300016: Polyline
+    4300018: Polyline
+    4300020: Polyline
+    4300022: Polyline
+    4300024: Polyline
+    4300026: Polyline
+    4300028: Polyline
+    4300030: Polyline
+    4300032: Polyline
+    4300034: Polyline
+    4300036: Polyline
+    4300038: Polyline
+    4300040: Polyline
+    4300042: Polyline
+    4300044: Polyline
+    4300046: Polyline
+    4300048: Polyline
+    4300050: Polyline
+    4300052: Polyline
+    4300054: Polyline
+    4300056: Polyline
+    4300058: Polyline
+    4300060: Polyline
+    4300062: Polyline
+    4300064: Polyline
+    4300066: Polyline
+    4300068: Polyline
+    4300070: Polyline
+    4300072: Polyline
+    4300074: Polyline
+    4300076: Polyline
+    4300078: Polyline
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

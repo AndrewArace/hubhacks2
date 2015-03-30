@@ -1,0 +1,45 @@
+Base path: C:/Program Files/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-3-10780
+Cmd: getPlatforms
+Cmd: compileSnippet
+  api=8 type=0 insize=99240 outsize=8166 kw=DIRECTIONAL SHADOWS_OFF LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF VERTEXLIGHT_ON GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=58481 outsize=4770 kw=DIRECTIONAL_COOKIE LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=58481 outsize=3397 kw=POINT LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=86883 outsize=6387 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF UNITY_HDR_ON GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=86883 outsize=2381 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF UNITY_HDR_ON LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=88439 outsize=2698 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF UNITY_HDR_ON LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1123 outsize=658 kw=SHADOWS_DEPTH LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1156 outsize=1642 kw=LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=876 outsize=1048 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1381 outsize=2600 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=1401 outsize=2186 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=1788 outsize=2430 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=2219 outsize=396 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=1097 outsize=2162 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=1179 outsize=231 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=2137 outsize=396 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1060 outsize=1471 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=1252 outsize=240 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1237 outsize=1690 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=1 insize=1260 outsize=438 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=1099 outsize=2162 kw= ok=1

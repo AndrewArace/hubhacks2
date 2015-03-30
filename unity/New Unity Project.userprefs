@@ -1,0 +1,36 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Model\ServiceController.cs">
+    <Files>
+      <File FileName="Assets\NeighborhoodTimer.cs" Line="56" Column="32" />
+      <File FileName="Assets\PlaceXY.cs" Line="100" Column="3" />
+      <File FileName="Assets\Model\ServiceController.cs" Line="53" Column="4" />
+      <File FileName="Assets\Model\DataReportObj.cs" Line="1" Column="1" />
+      <File FileName="Assets\CameraController.cs" Line="35" Column="4" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="Assembly-CSharp" expanded="True" selected="True">
+            <Node name="Model" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>url</Value>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\egros\Documents\New Unity Project\Assets\PoliceButtonHandler.cs" line="26" />
+      <Breakpoint file="C:\Users\egros\Documents\New Unity Project\Assets\CameraController.cs" line="87" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

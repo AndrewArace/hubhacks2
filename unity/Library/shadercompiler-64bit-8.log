@@ -1,0 +1,43 @@
+Base path: C:/Program Files/Unity/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-64bit-8-8380
+Cmd: getPlatforms
+Cmd: compileSnippet
+  api=8 type=0 insize=99240 outsize=7118 kw=DIRECTIONAL SHADOWS_SCREEN SHADOWS_NATIVE LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=58481 outsize=4502 kw=POINT_COOKIE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=58481 outsize=4095 kw=SPOT LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=49708 outsize=1178 kw=LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=88439 outsize=2698 kw=LIGHTMAP_OFF DIRLIGHTMAP_OFF DYNAMICLIGHTMAP_OFF UNITY_HDR_ON GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=1123 outsize=5647 kw=SHADOWS_DEPTH GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1123 outsize=992 kw=SHADOWS_CUBE LOD_FADE_PERCENTAGE GEOM_TYPE_BRANCH_BLEND ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=876 outsize=1690 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=1770 outsize=2430 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=1381 outsize=1950 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=2154 outsize=396 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=1852 outsize=290 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=1097 outsize=231 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=924 outsize=156 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1329 outsize=1682 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1934 outsize=2422 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=0 insize=1260 outsize=1950 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=882 outsize=156 kw= ok=1
+Cmd: compileSnippet
+  api=1 type=0 insize=1099 outsize=231 kw= ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1051 outsize=2015 kw= ok=1
