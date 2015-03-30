@@ -33,10 +33,10 @@
           <Property Name="XCoord" Type="decimal" Precision="9" Scale="4" Nullable="false" />
           <Property Name="YCoord" Type="decimal" Precision="9" Scale="4" Nullable="false" />
           <Property Name="IsRealtime" Type="bit" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ItemTime" Type="datetime" Nullable="false" />
-          <Property Name="IsHappy" Type="bit" Nullable="false" />
+          <Property Name="HappyFactor" Type="decimal" Precision="4" Scale="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Demographic">
           <Key>
@@ -76,6 +76,7 @@
           <Property Name="LabelLow" Type="nvarchar" MaxLength="50" />
           <Property Name="LabelHigh" Type="nvarchar" MaxLength="50" />
           <Property Name="LabelHighGreen" Type="bit" Nullable="false" />
+          <Property Name="YesAnswerBad" Type="bit" Nullable="false" />
           <Property Name="QuestionTypeId" Type="int" Nullable="false" />
           <Property Name="QuestionOrder" Type="int" />
           <Property Name="Enabled" Type="bit" Nullable="false" />
@@ -97,6 +98,7 @@
           <Property Name="SurveyTypeId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="30" />
           <Property Name="Enabled" Type="bit" Nullable="false" />
           <Property Name="FromDate" Type="datetime" />
           <Property Name="ToDate" Type="datetime" />
@@ -324,6 +326,7 @@
           <Property Name="LabelLow" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LabelHigh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LabelHighGreen" Type="Boolean" Nullable="false" />
+          <Property Name="YesAnswerBad" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="QuestionType">
           <Key>
@@ -349,6 +352,7 @@
           <Property Name="LargeImageUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Takens" Relationship="gov.cityofboston.hubhacks2.api.model.FK_Taken_Survey" FromRole="Survey" ToRole="Taken" />
           <NavigationProperty Name="Locations" Relationship="gov.cityofboston.hubhacks2.api.model.LocationSurvey" FromRole="Survey" ToRole="Location" />
+          <Property Name="Category" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Answer_Activation">
           <End Role="Activation" Type="Self.Activation" Multiplicity="1" />
@@ -515,10 +519,10 @@
           <Property Name="XCoord" Type="Decimal" Nullable="false" Precision="9" Scale="4" />
           <Property Name="YCoord" Type="Decimal" Nullable="false" Precision="9" Scale="4" />
           <Property Name="IsRealtime" Type="Boolean" Nullable="false" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ItemTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsHappy" Type="Boolean" Nullable="false" />
+          <Property Name="HappyFactor" Type="Decimal" Nullable="false" Precision="4" Scale="1" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -559,6 +563,7 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.Question">
               <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="YesAnswerBad" ColumnName="YesAnswerBad" />
                 <ScalarProperty Name="LabelHighGreen" ColumnName="LabelHighGreen" />
                 <ScalarProperty Name="LabelHigh" ColumnName="LabelHigh" />
                 <ScalarProperty Name="LabelLow" ColumnName="LabelLow" />
@@ -584,6 +589,7 @@
           <EntitySetMapping Name="Surveys">
             <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.Survey">
               <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="LargeImageUrl" ColumnName="LargeImageUrl" />
                 <ScalarProperty Name="SmallImageUrl" ColumnName="SmallImageUrl" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -631,7 +637,7 @@
           <EntitySetMapping Name="CloudDatas">
             <EntityTypeMapping TypeName="gov.cityofboston.hubhacks2.api.model.CloudData">
               <MappingFragment StoreEntitySet="CloudData">
-                <ScalarProperty Name="IsHappy" ColumnName="IsHappy" />
+                <ScalarProperty Name="HappyFactor" ColumnName="HappyFactor" />
                 <ScalarProperty Name="ItemTime" ColumnName="ItemTime" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Description" ColumnName="Description" />

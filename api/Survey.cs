@@ -30,6 +30,7 @@ namespace gov.cityofboston.hubhacks2.api
         public string Description { get; set; }
         public string SmallImageUrl { get; set; }
         public string LargeImageUrl { get; set; }
+        public string Category { get; set; }
     
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Taken> Takens { get; set; }

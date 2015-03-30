@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gov.cityofboston.hubhacks2.api.json {
+
+    /// <summary>
+    /// JSON representation of geofenced survey
+    /// 20150326 Andrew Arace
+    /// </summary>
     public class jLocation {
 
         public string Id { get; set; }
@@ -41,4 +46,5 @@ namespace gov.cityofboston.hubhacks2.api.json {
 
         }
     }
+
 }

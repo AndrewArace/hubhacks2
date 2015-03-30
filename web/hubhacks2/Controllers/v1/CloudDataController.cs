@@ -96,6 +96,27 @@ namespace gov.cityofboston.hubhacks2.web.Controllers.v1 {
         }
 
 
+        /// <summary>
+        /// Pull a specific piece of cloud data (for debugging)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("api/v1/cloudid/{id}")]
+        public result GetCloudData(int id) {
+            using (var ctx = new SurveyEntities()) {
+                result ret = new result(true);
+                var q = (from cd in ctx.CloudDatas
+                         where cd.Id == id
+                         select cd).FirstOrDefault();
+                if (q != null ) {
+                    ret.data = new jCloudData(q);
+                    return ret;
+                }
+                return result.NO_RESULTS;
+            }
+        }
+
     }
 
 }

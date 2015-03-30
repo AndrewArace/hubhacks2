@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace gov.cityofboston.hubhacks2.api.json {
 
-
+    /// <summary>
+    /// JSON representation of cloud data pulled by Unity
+    /// 20150326 Andrew Arace
+    /// </summary>
     public class jCloudData {
 
-        public const String TIME_FORMAT = "yyyyMMddHmmss";
+        public const String TIME_FORMAT = "yyyyMMddHHmmss";
 
         public int i { get; set; }
-        public int h { get; set; }
+        public double h { get; set; }
         public string c { get; set; }
         public string d { get; set; }
         public double x { get; set; }
@@ -21,7 +24,7 @@ namespace gov.cityofboston.hubhacks2.api.json {
 
         public jCloudData(CloudData cd) {
             i = cd.Id;
-            h = (cd.IsHappy ? 1 : 0);
+            h = (double)cd.HappyFactor;
             x = (double)cd.XCoord;
             y = (double)cd.YCoord;
             d = cd.Description;

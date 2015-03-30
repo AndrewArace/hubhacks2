@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace gov.cityofboston.hubhacks2.api.json {
 
+    /// <summary>
+    /// JSON representation of question answers, sent in by phone
+    /// 20150316 Andrew Arace
+    /// </summary>
     public class jQuestionAnswer {
 
         public string questionId { get; set; }

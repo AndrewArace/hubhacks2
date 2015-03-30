@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace gov.cityofboston.hubhacks2.api.json {
+
+    /// <summary>
+    /// JSON response object
+    /// </summary>
     public class result {
 
         public static result FAILED = new result(false);
@@ -21,6 +25,7 @@ namespace gov.cityofboston.hubhacks2.api.json {
 
         public result(bool success, string error = null) {
             this.success = success;
+            this.data = new List<object>();
             this.error = error;
         }
 

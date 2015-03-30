@@ -142,6 +142,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="android\placeholder.txt" />
     <Content Include="css\flat-ui-pro.css" />
     <Content Include="css\flat-ui-pro.min.css" />
     <Content Include="css\main.css" />
@@ -177,7 +178,19 @@
     <Content Include="fonts\lato\lato-regular.ttf" />
     <Content Include="fonts\lato\lato-regular.woff" />
     <Content Include="css\flat-ui-pro.css.map" />
+    <Content Include="img\android.png" />
     <Content Include="img\favicon.ico" />
+    <Content Include="img\geonetics.png" />
+    <Content Include="img\github.jpg" />
+    <Content Include="img\hubhacks.png" />
+    <Content Include="img\unity.png" />
+    <Content Include="js\flat-ui-pro.js" />
+    <Content Include="js\flat-ui-pro.min.js" />
+    <Content Include="js\vendor\html5shiv.js" />
+    <Content Include="js\vendor\jquery.min.js" />
+    <Content Include="js\vendor\respond.min.js" />
+    <Content Include="js\vendor\video-js.swf" />
+    <Content Include="unity\placeholder.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -193,7 +206,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="js\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +219,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\vendor\jquery.min.map" />
     <None Include="Properties\PublishProfiles\geo01-demo.pubxml" />
   </ItemGroup>
   <PropertyGroup>

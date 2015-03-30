@@ -21,6 +21,6 @@ namespace gov.cityofboston.hubhacks2.api
         public string Description { get; set; }
         public string Category { get; set; }
         public System.DateTime ItemTime { get; set; }
-        public bool IsHappy { get; set; }
+        public decimal HappyFactor { get; set; }
     }
 }

@@ -111,6 +111,14 @@ begin
 
 		insert into question (SurveyId, QuestionTypeId, questiontext)
 		values (@id, 1, 'Is other transportation, such as cabs, easily visible?')
+
+	insert into survey (name, surveytypeid, description)
+	values ('Neighborhood Happiness', 2, '')
+		select @id = id from survey where name = 'Neighborhood Happiness'
+
+		insert into question (SurveyId, QuestionTypeId, questiontext, LabelLow, LabelHigh, LabelHighGreen)
+		values (@id, 2, 'How happy does your current your current location make you feel?', 'unhappy', 'super happy', 1)
+
 end
 
 

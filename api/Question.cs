@@ -30,6 +30,7 @@ namespace gov.cityofboston.hubhacks2.api
         public string LabelLow { get; set; }
         public string LabelHigh { get; set; }
         public bool LabelHighGreen { get; set; }
+        public bool YesAnswerBad { get; set; }
     
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual QuestionType QuestionType { get; set; }
