@@ -3,8 +3,6 @@ City of Boston Hubhacks2 submission
 
 Submission for http://hubhacks2.challengepost.com/
 
-See: http://demo.geonetics.com/hubhacks2
-
 The goal of this project is to explore alternative and engaging technologies for visualizing  public sentiment associated with City services and events as they are spatially distributed in the city. Our approach was very ambitious within the scope of the hackathon, and our final product represents more of a starting point than a final, polished product. Our vision was to build a basic proof of concept showing how 3D gaming technology could be used to build the foundation for an interactive 3D data-rich world that can be interacted with and explored, as well as also supplement this information with new tools to collect public sentiment data. 
 
 The concept of  this system is to engage new constituent groups in a fun, interactive way, while providing City staff with unique feedback on how they are providing services.  The idea is to build a framework both visualization and **COLLECTING** public sentiment from multiple city data streams that interact with each other, hopefully engaging younger gaming culture in city functions in a fun and instructive way.
